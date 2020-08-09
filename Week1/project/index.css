@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid red; */
+}
+body {
+  background-color: antiquewhite;
+}
+.container {
+  width: 80%;
+  margin: 15em auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+button {
+  display: block;
+  align-self: flex-end;
+  /* margin-left: 50em; */
+  /* margin-top: 9em; */
+  background-color: orange;
+  padding: 1.5em;
+  border-radius: 5px;
+  position: absolute;
+  font-size: 0.9em;
+  color: white;
+  border: none;
+}
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 0 auto;
+  padding: 0.5em 1em;
+  quotes: '\201C''\201D''\2018''\2019';
+  width: 80%;
+  display: block;
+  height: 20em;
+  margin-top: 2em;
+  /* position: relative; */
+  border-radius: 5px;
+}
+blockquote:before {
+  color: black;
+  content: open-quote;
+  font-size: 8em;
+  line-height: 1em;
+  margin-right: 0.25em;
+  vertical-align: -0.1em;
+}
+blockquote p {
+  display: block;
+  /* margin-top: -3.5em; */
+  width: 60%;
+  margin: -2em auto;
+  font-size: 1.3em;
+}
