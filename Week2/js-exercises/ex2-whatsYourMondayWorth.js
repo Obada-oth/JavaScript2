@@ -11,12 +11,24 @@
 
  */
 
-
 function dayWorth(tasks, hourlyRate) {
   // put your code in here, the function does returns a euro formatted string
+  // convert minutes spent on each task to hours , and put the values in a new array
+  let taskDurationHrs = tasks.map((task) => task.duration / 60);
+  //caculate what each task is worth based on the specified hourly rate and put the values in a new array
+  let taskWorth = taskDurationHrs.map((taskDurationHrs) => taskDurationHrs * hourlyRate);
+  //set the format for EUR and the country and language to (Dutch-Netherlands)
+  let formatter = new Intl.NumberFormat('nl-NL', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 2,
+  });
+  //sums up the  tasks worth and returns that in a EUR formatted string for any array of objects which has a 'duration' property
+  return formatter.format(taskWorth.reduce((total, taskPay) => total + taskPay, 0));
 }
 
-const mondayTasks = [{
+const mondayTasks = [
+  {
     name: 'Daily standup',
     duration: 30, // specified in minutes
   },
@@ -34,5 +46,5 @@ const mondayTasks = [{
   },
 ];
 
-console.log(dayWorth(mondayTasks, 25))
-console.log(dayWorth(mondayTasks, 13.37))
+console.log(dayWorth(mondayTasks, 25)); //€187.50
+console.log(dayWorth(mondayTasks, 13.37)); //€100.28
