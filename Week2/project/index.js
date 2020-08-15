@@ -15,73 +15,131 @@ const playBtn = document.getElementById('play');
 const pauseBtn = document.getElementById('pause');
 const stopBtn = document.getElementById('stop');
 const TimeUpMessage = document.getElementById('time-up-message');
-
+const sessionLength = document.getElementById('session-length');
 const minutes = document.getElementById('minutes');
 const seconds = document.getElementById('seconds');
+const notification = document.getElementById('notification');
+
+const sZero = document.getElementById('s-zero');
+const mZero = document.getElementById('m-zero');
+const colon = document.getElementById('colon');
 
 let startCountdown;
-let pauseCountdown = false;
-
+// let pauseCountdown = false;
+let timeUp = false;
+pauseBtn.disabled = true;
+pauseBtn.style.color = 'grey';
 playBtn.addEventListener('click', function () {
+  arrowUp.disabled = true;
+  arrowDown.disabled = true;
+  pauseBtn.disabled = false;
+  pauseBtn.style.color = 'white';
+
+  arrowUp.style.color = 'grey';
+  arrowDown.style.color = 'grey';
+  minutes.style.color = '#2ed573';
+  seconds.style.color = '#2ed573';
+  colon.style.color = '#2ed573';
+  mZero.style.color = '#2ed573';
+  sZero.style.color = '#2ed573';
+  notification.innerText = 'Counting Down!';
   if (startCountdown === undefined) {
-    startCountdown = setInterval(play, 100);
+    startCountdown = setInterval(play, 1000);
   } else {
-    alert('running');
+    notification.innerText = 'Timer is already running!';
+  }
+  if (stopBtn.style.display == 'inline') {
+    stopBtn.style.display = 'none';
+    pauseBtn.style.display = 'inline';
   }
 });
 function reset() {
-  minutes.innerHTML = 25;
-  seconds.innerHTML = '00';
+  minutes.innerText = 25;
+  seconds.innerText = '00';
   stopCountdown();
-  if ((TimeUpMessage.className = 'show')) {
-    TimeUpMessage.classList.replace('show', 'hide');
-    minutes.classList.replace('hide', 'show');
-    seconds.classList.replace('hide', 'show');
-    startCountdown = undefined;
-    location.reload();
-  }
+
+  TimeUpMessage.classList.replace('show', 'hide');
+  minutes.classList.replace('hide', 'show');
+  seconds.classList.replace('hide', 'show');
+  // if (TimeUpMessage.classList.contains('show')) {
+  //   mZero.classList.replace('show', 'hide');
+  //   sZero.classList.replace('show', 'hide');
+  // }
+  startCountdown = undefined;
+  location.reload();
 }
 stopBtn.addEventListener('click', reset);
+
 pauseBtn.addEventListener('click', function () {
+  notification.innerText = 'Paused!';
+  stopBtn.style.display = 'inline';
+  pauseBtn.style.display = 'none';
   stopCountdown();
   startCountdown = undefined;
-  pauseCountdown = true;
+  // pauseCountdown = true;
 });
 arrowUp.addEventListener('click', function () {
   if (startCountdown === undefined) {
-    minutes.innerHTML++;
-  } else {
-    alert('running');
+    minutes.innerText++;
+    sessionLength.innerText++;
   }
-  if (pauseCountdown === true) {
-    alert('running');
-  }
+  // } else {
+  //   alert('running');
+  // }
+  // if (pauseCountdown === true) {
+  //   alert('running');
+  // }
 });
 arrowDown.addEventListener('click', function () {
-  if (startCountdown === undefined) {
-    minutes.innerHTML--;
-  } else {
-    alert('running');
+  if (startCountdown === undefined && minutes.innerText > 0) {
+    minutes.innerText--;
+    sessionLength.innerText--;
   }
-  if (pauseCountdown === true) {
-    alert('running');
-  }
+  // } else {
+  //   alert('running');
+  // }
+  // if (pauseCountdown === true) {
+  //   alert('running');
+  // }
 });
 
 function play() {
-  if (seconds.innerHTML != 0) {
-    seconds.innerHTML--;
-  } else if (seconds.innerHTML == 0 && minutes.innerHTML != 0) {
-    seconds.innerHTML = 59;
-    minutes.innerHTML--;
+  if (seconds.innerText != 0) {
+    seconds.innerText--;
+  } else if (seconds.innerText == 0 && minutes.innerText != 0) {
+    seconds.innerText = 59;
+    minutes.innerText--;
   }
-  if (seconds.innerHTML == 0 && minutes.innerHTML == 0) {
+  if (seconds.innerText == 0 && minutes.innerText == 0) {
+    timeUp = true;
+    if (timeUp == true) {
+      sZero.style.display = 'none';
+      mZero.style.display = 'none';
+    }
     minutes.classList.add('hide');
     seconds.classList.add('hide');
+    colon.classList.replace('show', 'hide');
+
     TimeUpMessage.classList.replace('hide', 'show');
-    document.querySelector('body').addEventListener('click', reset);
+    notification.innerText = 'Click anywhere to start a new session!';
+
+    document.querySelector('html').addEventListener('click', reset);
+  }
+  // if (TimeUpMessage.classList.contains('show')) {
+
+  // }
+  if (seconds.innerText >= 0 && seconds.innerText < 10 && timeUp == false) {
+    sZero.style.display = 'inline';
+  } else {
+    sZero.style.display = 'none';
+  }
+  if (minutes.innerText >= 0 && minutes.innerText < 10 && timeUp == false) {
+    mZero.style.display = 'inline';
+  } else {
+    mZero.style.display = 'none';
   }
 }
+
 function stopCountdown() {
   clearInterval(startCountdown);
 }
