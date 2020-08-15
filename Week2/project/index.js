@@ -25,7 +25,7 @@ const mZero = document.getElementById('m-zero');
 const colon = document.getElementById('colon');
 
 let startCountdown;
-// let pauseCountdown = false;
+
 let timeUp = false;
 pauseBtn.disabled = true;
 pauseBtn.style.color = 'grey';
@@ -61,10 +61,6 @@ function reset() {
   TimeUpMessage.classList.replace('show', 'hide');
   minutes.classList.replace('hide', 'show');
   seconds.classList.replace('hide', 'show');
-  // if (TimeUpMessage.classList.contains('show')) {
-  //   mZero.classList.replace('show', 'hide');
-  //   sZero.classList.replace('show', 'hide');
-  // }
   startCountdown = undefined;
   location.reload();
 }
@@ -76,31 +72,18 @@ pauseBtn.addEventListener('click', function () {
   pauseBtn.style.display = 'none';
   stopCountdown();
   startCountdown = undefined;
-  // pauseCountdown = true;
 });
 arrowUp.addEventListener('click', function () {
   if (startCountdown === undefined) {
     minutes.innerText++;
     sessionLength.innerText++;
   }
-  // } else {
-  //   alert('running');
-  // }
-  // if (pauseCountdown === true) {
-  //   alert('running');
-  // }
 });
 arrowDown.addEventListener('click', function () {
   if (startCountdown === undefined && minutes.innerText > 0) {
     minutes.innerText--;
     sessionLength.innerText--;
   }
-  // } else {
-  //   alert('running');
-  // }
-  // if (pauseCountdown === true) {
-  //   alert('running');
-  // }
 });
 
 function play() {
@@ -125,9 +108,7 @@ function play() {
 
     document.querySelector('html').addEventListener('click', reset);
   }
-  // if (TimeUpMessage.classList.contains('show')) {
 
-  // }
   if (seconds.innerText >= 0 && seconds.innerText < 10 && timeUp == false) {
     sZero.style.display = 'inline';
   } else {
