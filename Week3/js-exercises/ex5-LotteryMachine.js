@@ -26,35 +26,36 @@ Don't you just love the thrill of the lottery? What if I told you we can make ou
 
 */
 debugger;
-function threeFive(startIndex, stopIndex, threeCallback, fiveCallback) {
+function threeFive(startNumber, stopNumber, threeCallback, fiveCallback) {
   // make array
-  
+  function makeArray() {
+    let numbers = [];
 
-    // start at beginning of array and check if you should call threeCallback or fiveCallback or go on to next
-  }
-  for (let i = 0; i < numbers.length; i++) {
-    if (numbers[i] % 3 === 0) {
-      return threeCallback;
+    for (let i = 0; i <= stopNumber - startNumber; i++) {
+      numbers.push(startNumber + i);
     }
-    if (numbers[i] % 5 === 0) {
-      return fiveCallback;
-    }
-  }
-}
-function makeArray(){
-  const numbers = [];
-  
-  for (let i = 0; i <= stopIndex - startIndex; i++) {
-    numbers.push(startIndex + i);
     return numbers;
+  }
+  let newArray = makeArray();
 
+  function checkArray(newArray) {
+    for (let i = 0; i < newArray.length; i++) {
+      if (newArray[i] % 3 === 0) {
+        threeCallback(newArray[i]);
+      }
+      if (newArray[i] % 5 === 0) {
+        fiveCallback(newArray[i]);
+      }
+    }
+  }
+  checkArray(newArray);
 }
-  
-function sayThree() {
-  console.log('Devisible By Three');
+
+function sayThree(num) {
+  console.log(num + ' Is devisible By Three');
 }
-function sayFive() {
-  console.log('devisible By Five');
+function sayFive(num) {
+  console.log(num + ' Is devisible By Five');
 }
 
 threeFive(10, 15, sayThree, sayFive);
