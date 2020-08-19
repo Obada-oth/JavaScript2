@@ -22,6 +22,7 @@ function createBookList(books) {
   const ulElement = document.createElement('ul');
   const bookList = document.getElementById('bookList');
   const header = document.querySelector('h1');
+  header.style.textAlign = 'center';
 
   bookList.appendChild(ulElement);
 
@@ -37,7 +38,7 @@ function createBookList(books) {
       bookLi.style.backgroundColor = 'green';
     }
     const image = document.createElement('img');
-    header.style.textAlign = 'center';
+
     image.setAttribute('src', book.imgURL);
     image.setAttribute('width', '150');
     image.setAttribute('height', '200');
