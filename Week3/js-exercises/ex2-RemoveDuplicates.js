@@ -10,12 +10,23 @@ does not return anything but removes any duplicate elements from the array.
    
  */
 
-
 // WRITE YOUR FUNCTION HERE
-
+// debugger;
 const letters = ['a', 'b', 'c', 'd', 'a', 'e', 'f', 'c', 'b'];
 
-removeDuplicates(letter);
+function removeDuplicates(letters) {
+  let occuredOnce = [];
+  for (let i = 0; i < letters.length; i++) {
+    letter = letters[i];
+    if (occuredOnce.indexOf(letter) === -1) {
+      occuredOnce.push(letter);
+    }
+  }
 
-if (letters === ['a', 'b', 'c', 'd', 'e', 'f'])
-  console.log("Hooray!")
+  return occuredOnce;
+}
+
+console.log(removeDuplicates(letters));
+
+if (JSON.stringify(removeDuplicates(letters)) === JSON.stringify(['a', 'b', 'c', 'd', 'e', 'f']))
+  console.log('Hooray!');

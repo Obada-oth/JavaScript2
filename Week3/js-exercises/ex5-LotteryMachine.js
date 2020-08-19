@@ -25,11 +25,36 @@ Don't you just love the thrill of the lottery? What if I told you we can make ou
  if the array value is divisible by both 3 and 5.
 
 */
-
+debugger;
 function threeFive(startIndex, stopIndex, threeCallback, fiveCallback) {
-  const numbers = [];
   // make array
-  // start at beginning of array and check if you should call threeCallback or fiveCallback or go on to next
+  
+
+    // start at beginning of array and check if you should call threeCallback or fiveCallback or go on to next
+  }
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 3 === 0) {
+      return threeCallback;
+    }
+    if (numbers[i] % 5 === 0) {
+      return fiveCallback;
+    }
+  }
+}
+function makeArray(){
+  const numbers = [];
+  
+  for (let i = 0; i <= stopIndex - startIndex; i++) {
+    numbers.push(startIndex + i);
+    return numbers;
+
+}
+  
+function sayThree() {
+  console.log('Devisible By Three');
+}
+function sayFive() {
+  console.log('devisible By Five');
 }
 
 threeFive(10, 15, sayThree, sayFive);
