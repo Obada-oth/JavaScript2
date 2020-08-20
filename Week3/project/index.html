@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tip Calculator</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tip Calculator</title>
-</head>
-
-<body>
-  <div id="app"></div>
-  <script src="index.js"></script>
-</body>
-
+  <body>
+    <header>
+      <div id="header"></div>
+    </header>
+    <main>
+      <input type="number" id="bill-amount" value="0" />
+      <input list="ratings" id="service-rating" />
+      <datalist id="ratings">
+        <option value="30%-outstanding"></option>
+        <option value="20%"></option>
+        <option value="10%"></option>
+        <option value="5%"></option>
+        <option value="1%"></option>
+      </datalist>
+      <input type="number" id="people-count" />
+      <div>
+        <button id="calculate">
+          Calculate!
+        </button>
+      </div>
+      <div>
+        <p id="tip-amount"></p>
+      </div>
+    </main>
+    <script src="index.js"></script>
+  </body>
 </html>
