@@ -22,8 +22,8 @@
 
 const myNumbers = [1, 2, 3, 4];
 function doubleEvenNumbers(numbers) {
-  const evenNumbers = numbers.filter((number) => (number % 2 == 0 ? true : false));
+  const evenNumbers = numbers.filter((number) => number % 2 === 0);
   return evenNumbers.map((number) => number * 2);
 }
 
-console.log(doubleEvenNumbers(myNumbers1)); // Logs "[4,8]"
+console.log(doubleEvenNumbers(myNumbers)); // Logs "[4,8]"
