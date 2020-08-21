@@ -13,11 +13,13 @@ function calculateTip() {
   if (
     !billAmount.value ||
     !serviceRating.value ||
+    !peopleCount.value ||
     serviceRating.value === '--Choose an Option--' ||
-    !peopleCount.value
+    billAmount.value === '0' ||
+    peopleCount.value === '0'
   ) {
-    console.log(outPut.innerText);
     alert('All fields must be filled');
+    input;
   } else {
     billAmount.value === billAmount.innerText;
     serviceRating.value === serviceRating.innerText;
