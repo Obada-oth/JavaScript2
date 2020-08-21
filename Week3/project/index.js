@@ -14,7 +14,7 @@ function calculateTip() {
     !billAmount.value ||
     !serviceRating.value ||
     !peopleCount.value ||
-    serviceRating.value === '--Choose an Option--' ||
+    serviceRating.value === '--Choose an option--' ||
     billAmount.value === '0' ||
     peopleCount.value === '0'
   ) {
