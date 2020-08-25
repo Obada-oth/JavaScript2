@@ -38,17 +38,14 @@ function threeFive(startNumber, stopNumber, threeCallback, fiveCallback) {
   }
   let newArray = makeArray();
 
-  function checkArray(newArray) {
-    for (let i = 0; i < newArray.length; i++) {
-      if (newArray[i] % 3 === 0) {
-        threeCallback(newArray[i]);
-      }
-      if (newArray[i] % 5 === 0) {
-        fiveCallback(newArray[i]);
-      }
+  newArray.forEach((num) => {
+    if (num % 3 === 0) {
+      threeCallback(num);
     }
-  }
-  checkArray(newArray);
+    if (num % 5 === 0) {
+      fiveCallback(num);
+    }
+  });
 }
 
 function sayThree(num) {
