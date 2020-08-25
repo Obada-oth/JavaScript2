@@ -13,20 +13,16 @@ does not return anything but removes any duplicate elements from the array.
 // WRITE YOUR FUNCTION HERE
 // debugger;
 const letters = ['a', 'b', 'c', 'd', 'a', 'e', 'f', 'c', 'b'];
-
-function removeDuplicates(letters) {
-  let occuredOnce = [];
-  for (let i = 0; i < letters.length; i++) {
-    letter = letters[i];
-    if (occuredOnce.indexOf(letter) === -1) {
-      occuredOnce.push(letter);
+let removeDuplicates = (letters) => {
+  letters.sort().forEach((letter, index) => {
+    if (letters.indexOf(letter) !== index) {
+      letters.splice(index, 1);
     }
-  }
-
-  return occuredOnce;
-}
-
+  });
+  return letters;
+};
 console.log(removeDuplicates(letters));
 
-if (JSON.stringify(removeDuplicates(letters)) === JSON.stringify(['a', 'b', 'c', 'd', 'e', 'f']))
+if (JSON.stringify(removeDuplicates(letters)) === JSON.stringify(['a', 'b', 'c', 'd', 'e', 'f'])) {
   console.log('Hooray!');
+}
