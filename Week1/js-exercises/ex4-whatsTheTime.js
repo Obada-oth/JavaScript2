@@ -10,9 +10,15 @@
   4. Have the function execute when it 's loading in the browser
 
  */
-
+document.addEventListener('DOMContentLoaded', displayCurrentTime);
 function displayCurrentTime() {
   // your code goes in here
+  const day = new Date();
+
+  const currentTime = day.toLocaleTimeString();
+
+  const body = document.querySelector('body');
+  body.innerHTML = currentTime;
 }
 
 setInterval(displayCurrentTime, 1000);

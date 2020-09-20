@@ -18,25 +18,63 @@
 
 function createBookList(books) {
   // your code goes in here, return the ul element
+
+  const ulElement = document.createElement('ul');
+  const bookList = document.getElementById('bookList');
+  const header = document.querySelector('h1');
+  header.style.textAlign = 'center';
+
+  bookList.appendChild(ulElement);
+
+  for (let i = 0; i < books.length; i++) {
+    const book = books[i];
+    const bookLi = document.createElement('li');
+    const p = document.createElement('p');
+
+    p.textContent = book.title + ' - ' + book.author;
+    if (book.alreadyRead === false) {
+      bookLi.style.backgroundColor = 'red';
+    } else {
+      bookLi.style.backgroundColor = 'green';
+    }
+    const image = document.createElement('img');
+
+    image.setAttribute('src', book.imgURL);
+    image.setAttribute('width', '150');
+    image.setAttribute('height', '200');
+    image.style.display = 'block';
+    image.style.margin = 'auto';
+    bookLi.style.listStyle = 'none';
+    bookLi.style.width = '30%';
+    bookLi.style.display = 'inline-block';
+    bookLi.style.margin = '1em';
+    p.style.textAlign = 'center';
+    bookLi.appendChild(image);
+    ulElement.appendChild(bookLi);
+    bookLi.appendChild(p);
+  }
 }
 
-const books = [{
+const books = [
+  {
     title: 'The Design of Everyday Things',
     author: 'Don Norman',
-    alreadyRead: false
+    alreadyRead: false,
+    imgURL: 'https://miro.medium.com/max/500/1*Qo27inBKBKY4Q4Pgk5KkbQ.png',
   },
   {
     title: 'The Most Human Human',
     author: 'Brian Christian',
-    alreadyRead: true
+    alreadyRead: true,
+    imgURL:
+      'https://images-na.ssl-images-amazon.com/images/I/41m1rQjm5tL._SX322_BO1,204,203,200_.jpg',
   },
   {
     title: 'The Pragmatic Programmer',
     author: 'Andrew Hunt',
-    alreadyRead: true
-  }
+    alreadyRead: true,
+    imgURL:
+      'https://images-na.ssl-images-amazon.com/images/I/418M2053aNL._SX396_BO1,204,203,200_.jpg',
+  },
 ];
-
-let ulElement = createBookList(books);
-
-document.querySelector("#bookList").appendChild(ulElement);
+const ulElement = createBookList(books);
